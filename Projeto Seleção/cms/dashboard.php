@@ -21,6 +21,12 @@ exit;
 <a href="preferencias/form.php">
     <button> Preferências</button>
 </a><br><br>
+<a href="caracteristicas/list.php">
+    <button> Características</button>
+</a><br><br>
+<a href="mensagens/list.php">
+    <button>Mensagens</button>
+</a><br><br>
 
 
 <a href="logout.php">Sair</a>
