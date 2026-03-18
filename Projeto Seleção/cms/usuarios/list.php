@@ -33,15 +33,23 @@ $usuarios = Usuario::all();
 
 <td>
 
-<?php if($usuario['id'] != 1): ?>
+<?php if ($_SESSION['usuario']['id'] === 1): ?>
 
-<a href="delete.php?id=<?php echo $usuario['id']; ?>">
-Excluir
-</a>
+    <?php if($usuario['id'] != 1): ?>
+
+        <a href="delete.php?id=<?php echo $usuario['id']; ?>">
+            Excluir
+        </a>
+
+    <?php else: ?>
+
+        Admin protegido
+
+    <?php endif; ?>
 
 <?php else: ?>
 
-Admin protegido
+    Sem permissão
 
 <?php endif; ?>
 

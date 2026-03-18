@@ -15,7 +15,9 @@
    
     
 
-    <link rel="shortcut icon" href="images/favicon.png">
+   <!--  <link rel="shortcut icon" href="images/favicon.png">-->
+    <link id="favicon" rel="shortcut icon" href="">
+
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" id="bootstrap-style">
@@ -667,8 +669,39 @@
     <!-- App Js -->
     <script src="js/app.js"></script> 
 
+
+    <script>
+fetch('../cms/api/api.php')
+.then(res => res.json())
+.then(data => {
+
+    console.log(data); // debug
+
+    // favicon
+    if(data.favicon){
+        document.getElementById("favicon").href = data.favicon;
+    }
+/*
+    // título home
+    document.getElementById("titulo_home").innerText =
+        data.titulo_home || '';
+
+    // subtítulo
+    document.getElementById("subtitulo_home").innerText =
+        data.subtitulo_home || '';
+
+    // logo
+    if(data.logo_cabecalho){
+        document.getElementById("logo").src =
+            "../cms/uploads/" + data.logo_cabecalho;
+    }
+*/
+});
+
+</script>
     <style>
 	
+    
 
 
 

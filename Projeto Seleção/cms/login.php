@@ -13,7 +13,7 @@ $usuario = Usuario::login($login,$senha);
 
 if($usuario){
 
-$_SESSION['usuario'] = $usuario['login'];
+$_SESSION['usuario'] = $usuario;
 
 header("Location: dashboard.php");
 exit;

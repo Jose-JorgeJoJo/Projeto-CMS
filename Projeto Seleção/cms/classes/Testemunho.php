@@ -9,7 +9,15 @@ class Testemunho{
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    public static function getById($id){
+        $conn = Database::getConnection();
+        $sql = "SELECT * FROM testemunhos WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public static function delete($id){
 
         $conn = Database::getConnection();

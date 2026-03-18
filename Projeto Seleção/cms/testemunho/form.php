@@ -2,7 +2,19 @@
 require_once '../classes/Testemunho.php';
 
 $dados = Testemunho::get();
+$dados = [
+    'id' => '', 'nome' => '', 'funcao' => '', 
+    'titulo' => '', 'descricao' => '', 'foto' => '', 'imagem_fundo' => ''
+];
 
+
+if (isset($_GET['id'])) {
+    $registro = Testemunho::getById($_GET['id']);
+    
+    if ($registro) {
+        $dados = $registro; 
+    }
+}
 
 if($_POST){
     Testemunho::save($_POST);

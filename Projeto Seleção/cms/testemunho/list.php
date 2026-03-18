@@ -40,5 +40,14 @@ $testemunhos = Testemunho::get();
 <td><?php echo $testemunho['foto']; ?></td>
 <td><?php echo $testemunho['imagem_fundo']; ?></td>
 
+
+<td>
+    <a href="form.php?id=<?php echo $testemunho['id']; ?>">
+Editar
+</a>
+<a href="delete.php?id=<?php echo $testemunho['id']; ?>">
+Excluir
+</a>
+</td>
 </tr>
 <?php endforeach; ?></table>
