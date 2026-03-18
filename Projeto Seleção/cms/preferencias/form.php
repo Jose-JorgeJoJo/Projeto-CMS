@@ -37,9 +37,18 @@ value="<?php echo $dados['logo_cabecalho'] ?? ''; ?>"><br><br>
 <input type="text" name="link_facebook" placeholder="Facebook"
 value="<?php echo $dados['link_facebook'] ?? ''; ?>"><br><br>
 
+<label for="imagem_facebook">Imagem Facebook:</label>
+<input type="text" name="imagem_facebook" placeholder="Imagem Facebook"
+value="<?php echo $dados['imagem_facebook'] ?? ''; ?>"><br><br>
+
 <label for="link_instagram">Link Instagram:</label>
 <input type="text" name="link_instagram" placeholder="Instagram"
 value="<?php echo $dados['link_instagram'] ?? ''; ?>"><br><br>
+
+
+<label for="imagem_instagram">Imagem Instagram:</label>
+<input type="text" name="imagem_instagram" placeholder="Imagem Instagram"
+value="<?php echo $dados['imagem_instagram'] ?? ''; ?>"><br><br>
 
 
 <label for="titulo_home">Título Home:</label>
@@ -80,9 +89,17 @@ value="<?php echo $dados['imagem_loja'] ?? ''; ?>"><br><br>
 <input type="text" name="imagem_appstore" placeholder="Imagem App Store"
 value="<?php echo $dados['imagem_appstore'] ?? ''; ?>"><br><br>
 
+<label for="link_appstore">Link App Store:</label>
+<input type="text" name="link_appstore" placeholder="Link App Store"
+value="<?php echo $dados['link_appstore'] ?? ''; ?>"><br><br>
+
 <label for="imagem_playstore">Imagem Play Store:</label>
 <input type="text" name="imagem_playstore" placeholder="Imagem Play Store"
 value="<?php echo $dados['imagem_playstore'] ?? ''; ?>"><br><br>
+
+<label for="link_playstore">Link Play Store:</label>
+<input type="text" name="link_playstore" placeholder="Link Play Store"
+value="<?php echo $dados['link_playstore'] ?? ''; ?>"><br><br>
 
 <label for="telefone">Telefone:</label>
 <input type="text" name="telefone" placeholder="Telefone"

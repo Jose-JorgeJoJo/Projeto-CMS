@@ -32,7 +32,7 @@ if($_POST){
 <form method="post">
 
 <label for="id">Id:</label>
-<input type="text" name="id" placeholder="Id"
+<input type="text" name="id" placeholder="Id " readonly="1"
 value="<?php echo $dados['id'] ?? ''; ?>"><br><br>
 
 <label for="nome">Nome:</label>
