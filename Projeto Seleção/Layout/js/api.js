@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("favicon").href = getImg(pref.favicon);
       }
 
+      document.getElementById("titulo_landing").innerText =
+        pref.titulo_landing || "";
+
       // ✅ logo
       if (pref.logo_cabecalho) {
         document.getElementById("logo").src = getImg(pref.logo_cabecalho);
@@ -26,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ✅ títulos
       document.getElementById("titulo_home").innerText = pref.titulo_home || "";
-      document.getElementById("subtitulo_home").innerText = pref.subtitulo_home || "";
+      document.getElementById("subtitulo_home").innerText =
+        pref.subtitulo_home || "";
 
       // ✅ imagem home
       if (pref.imagem_home) {
@@ -35,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ✅ seção características
 
-      document.getElementById("titulo_caracteristicas").innerText =
+      document.getElementById("texto_titulo_caracteristicas").innerText =
         pref.titulo_caracteristicas || "";
 
       // ✅ testemunho
@@ -83,18 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("link_instagram").href = pref.link_instagram;
       }
 
-      if (pref.imagem_facebook) {
-        document.getElementById("img_facebook").src = getImg(
-          pref.imagem_facebook,
-        );
-      }
-
-      if (pref.imagem_instagram) {
-        document.getElementById("img_instagram").src = getImg(
-          pref.imagem_instagram,
-        );
-      }
-
       // ✅ rodapé
       if (pref.logo_rodape) {
         document.getElementById("logo_rodape").src = getImg(pref.logo_rodape);
@@ -108,18 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (pref.url_rodape) {
         document.getElementById("url_rodape").href = pref.url_rodape;
-      }
-
-      if (pref.imagem_facebook) {
-        document.getElementById("img_facebook_fotter").src = getImg(
-          pref.imagem_facebook,
-        );
-      }
-
-      if (pref.imagem_instagram) {
-        document.getElementById("img_instagram_fotter").src = getImg(
-          pref.imagem_instagram,
-        );
       }
 
       if (pref.link_facebook) {
@@ -163,50 +143,66 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = html;
       }
 
-      const containerTest = document.getElementById("lista_testemunhos");
+       const containerTest = document.getElementById("lista_testemunhos");
 
-      if (containerTest && data.testemunhos) {
+      if (containerTest && data.testemunhos?.length > 0) {
         let html = "";
 
         data.testemunhos.forEach((item) => {
           html += `
-        <div class="item">
-            <div class="testi-box position-relative overflow-hidden">
+            <div class="item">
+              <div class="testi-box position-relative overflow-hidden">
                 <div class="row align-items-center">
 
-                    <div class="col-md-5">
-                        <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
-                    </div>
+                  <div class="col-md-5">
+                    <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
+                  </div>
 
-                    <div class="col-md-7">
-                        <div class="p-4">
+                  <div class="col-md-7">
+                    <div class="p-4">
 
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                    <img src="${getImg(item.foto)}" class="img-fluid rounded-circle">
-                                </div>
-
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-0">${item.nome}</p>
-                                    <p class="text-muted mb-0">${item.funcao}</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-3">
-                                <h5 class="fw-bold">${item.titulo}</h5>
-                                <p class="text-muted">${item.descricao}</p>
-                            </div>
-
+                      <div class="d-flex align-items-center">
+                        <div class="avatar">
+                          <img src="${getImg(item.foto)}" class="img-fluid rounded-circle">
                         </div>
+
+                        <div class="ms-3">
+                          <p class="fw-bold mb-0">${item.nome || ""}</p>
+                          <p class="text-muted mb-0">${item.funcao || ""}</p>
+                        </div>
+                      </div>
+
+                      <div class="mt-3">
+                        <h5 class="fw-bold">${item.titulo || ""}</h5>
+                        <p class="text-muted">${item.descricao || ""}</p>
+                      </div>
+
                     </div>
+                  </div>
 
                 </div>
+              </div>
             </div>
-        </div>
-        `;
+          `;
         });
 
+        // 🔥 limpa antes
         containerTest.innerHTML = html;
+
+        // 🔥 REINICIA SLIDER (Owl)
+        if ($.fn.owlCarousel) {
+          $("#lista_testemunhos").trigger("destroy.owl.carousel");
+        }
+
+        $("#lista_testemunhos").owlCarousel({
+          items: 1,
+          loop: true,
+          margin: 10,
+          nav: false,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 4000
+        });
       }
     })
     .catch((err) => {
