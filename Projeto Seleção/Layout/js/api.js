@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // ✅ títulos
-      document.getElementById("subtitulo_home").innerText =
-        pref.subtitulo_home || "";
+      document.getElementById("titulo_home").innerText = pref.titulo_home || "";
+      document.getElementById("subtitulo_home").innerText = pref.subtitulo_home || "";
 
       // ✅ imagem home
       if (pref.imagem_home) {
