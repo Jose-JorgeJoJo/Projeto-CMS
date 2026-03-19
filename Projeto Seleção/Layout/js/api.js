@@ -48,8 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ✅ loja
       if (pref.imagem_loja) {
-        const el = document.getElementById("imagem_loja");
-        if (el) el.src = getImg(data.imagem_loja);
+        document.getElementById("imagem_loja").src = getImg(
+          pref.imagem_loja
+        );
       }
 
       // ✅ loja
@@ -143,67 +144,75 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = html;
       }
 
-       const containerTest = document.getElementById("lista_testemunhos");
+  const containerTest = document.getElementById("lista_testemunhos");
 
-      if (containerTest && data.testemunhos?.length > 0) {
-        let html = "";
+if (containerTest && data.testemunhos?.length > 0) {
+  let html = "";
 
-        data.testemunhos.forEach((item) => {
-          html += `
-            <div class="item">
-              <div class="testi-box position-relative overflow-hidden">
-                <div class="row align-items-center">
+  data.testemunhos.forEach((item) => {
+    html += `
+      <div class="item">
+        <div class="testi-box position-relative overflow-hidden">
+          <div class="row align-items-center">
 
-                  <div class="col-md-5">
-                    <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
+            <div class="col-md-5">
+              <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
+            </div>
+
+            <div class="col-md-7">
+              <div class="p-4">
+
+                <div class="d-flex align-items-center">
+                  <div class="avatar">
+                    <img src="${getImg(item.foto)}" class="img-fluid rounded-circle">
                   </div>
 
-                  <div class="col-md-7">
-                    <div class="p-4">
-
-                      <div class="d-flex align-items-center">
-                        <div class="avatar">
-                          <img src="${getImg(item.foto)}" class="img-fluid rounded-circle">
-                        </div>
-
-                        <div class="ms-3">
-                          <p class="fw-bold mb-0">${item.nome || ""}</p>
-                          <p class="text-muted mb-0">${item.funcao || ""}</p>
-                        </div>
-                      </div>
-
-                      <div class="mt-3">
-                        <h5 class="fw-bold">${item.titulo || ""}</h5>
-                        <p class="text-muted">${item.descricao || ""}</p>
-                      </div>
-
-                    </div>
+                  <div class="ms-3">
+                    <p class="fw-bold mb-0">${item.nome || ""}</p>
+                    <p class="text-muted mb-0">${item.funcao || ""}</p>
                   </div>
-
                 </div>
+
+                <div class="mt-3">
+                  <h5 class="fw-bold">${item.titulo || ""}</h5>
+                  <p class="text-muted">${item.descricao || ""}</p>
+                </div>
+
               </div>
             </div>
-          `;
-        });
 
-        // 🔥 limpa antes
-        containerTest.innerHTML = html;
+          </div>
+        </div>
+      </div>
+    `;
+  });
 
-        // 🔥 REINICIA SLIDER (Owl)
-        if ($.fn.owlCarousel) {
-          $("#lista_testemunhos").trigger("destroy.owl.carousel");
-        }
+  containerTest.innerHTML = html;
 
-        $("#lista_testemunhos").owlCarousel({
-          items: 1,
-          loop: true,
-          margin: 10,
-          nav: false,
-          dots: true,
-          autoplay: true,
-          autoplayTimeout: 4000
-        });
-      }
+  // 🔥 AGUARDA o DOM atualizar
+  setTimeout(() => {
+
+    // destrói se já existir
+    if ($("#lista_testemunhos").hasClass("owl-loaded")) {
+      $("#lista_testemunhos").trigger("destroy.owl.carousel");
+      $("#lista_testemunhos").removeClass("owl-loaded");
+      $("#lista_testemunhos").find(".owl-stage-outer").children().unwrap();
+    }
+
+    // inicia slider
+    $("#lista_testemunhos").owlCarousel({
+      items: 1,
+      loop: true,
+      margin: 20,
+      nav: false,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      smartSpeed: 600
+    });
+
+  }, 100); // 🔥 ESSENCIAL
+}
     })
     .catch((err) => {
       console.error("Erro ao carregar API:", err);
