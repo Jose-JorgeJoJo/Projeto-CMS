@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Característica</title>
+    <link rel="stylesheet" href="cms/html/css/style.css">
 </head>
 <body>
+
+    <div class="nav">
+        <a href="index.php?class=CaracteristicaList" class="btn">← Voltar para a Lista</a>
+        <a href="index.php?class=Dashboard" class="btn">← Dashboard</a>
+    </div>
+
     <h2>Cadastro de Característica</h2>
     
-    <form method="post" action="index.php?class=CaracteristicaForm&method=save">
+    <form method="POST" action="index.php?class=CaracteristicaForm&method=save">
         <input type="hidden" name="id" value="{id}">
 
-        <p>
-            <label>Título:</label><br>
-            <input type="text" name="titulo" value="{titulo}" required style="width: 300px;">
-        </p>
+        <div class="form-group">
+            <label>Título:</label>
+            <input type="text" name="titulo" value="{titulo}" placeholder="Digite o título da característica" required>
+        </div>
 
-        <p>
-            <label>Descrição:</label><br>
-            <textarea name="descricao" rows="5" required style="width: 300px;">{descricao}</textarea>
-        </p>
+        <div class="form-group">
+            <label>Descrição:</label>
+            <textarea name="descricao" rows="5" placeholder="Descreva esta característica" required>{descricao}</textarea>
+        </div>
 
         <button type="submit">Salvar</button>
-        <a href="index.php?class=CaracteristicaList">Cancelar</a>
+        <a href="index.php?class=CaracteristicaList" class="btn" style="margin-left: 10px; color: #666; text-decoration: none;">Cancelar</a>
     </form>
+
 </body>
 </html>

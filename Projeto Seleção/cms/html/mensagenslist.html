@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Mensagens Recebidas</title>
+    <link rel="stylesheet" href="cms/html/css/style.css">
 </head>
 <body>
-    <a href="index.php?class=Dashboard">← Dashboard</a>
+
+    <div class="nav">
+        <a href="index.php?class=Dashboard" class="btn">← Voltar ao Dashboard</a>
+    </div>
 
     <h2>Mensagens Recebidas</h2>
 
-    <table border="1" style="width: 100%; text-align: left;">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
-                <th>Mensagem</th>
+                <th style="width: 40%;">Mensagem</th>
                 <th>Data</th>
             </tr>
         </thead>
@@ -24,5 +28,6 @@
             {tabela}
         </tbody>
     </table>
+
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="cms/html/css/style.css">
+</head>
+<body>
+
+    <h2>Dashboard</h2>
+    <p>Bem-vindo, <strong>{usuario}</strong>!</p>
+
+    <div class="dash-grid">
+        <a href="index.php?class=UsuarioList" class="dash-card">Usuários</a>
+        <a href="index.php?class=PreferenciaForm" class="dash-card">Preferências</a>
+        <a href="index.php?class=CaracteristicaList" class="dash-card">Características</a>
+        <a href="index.php?class=TestemunhoList" class="dash-card">Testemunhos</a>
+        <a href="index.php?class=MensagemList" class="dash-card">Mensagens</a>
+    </div>
+
+    <br><br>
+    <a href="index.php?class=Login&method=logout" class="btn" style="color: red;">Sair do Sistema</a>
+
+</body>
+</html>

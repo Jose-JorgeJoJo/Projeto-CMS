@@ -3,44 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Configurações de Testemunhos</title>
+    <link rel="stylesheet" href="cms/html/css/style.css">
 </head>
 <body>
-    <a href="index.php?class=Dashboard">← Dashboard</a>
-    <a href="index.php?class=TestemunhoList">← Retornar</a>
+
+    <div class="nav">
+        <a href="index.php?class=TestemunhoList" class="btn" style="margin-left: 15px;">← Retornar à Lista</a>
+        <a href="index.php?class=Dashboard" class="btn">← Dashboard</a>
+    </div>
 
     <h2>Configurações de Testemunhos</h2>
 
     {mensagem}
 
-    <form method="post" enctype="multipart/form-data" action="index.php?class=TestemunhoForm&method=save">
-        <label>Id:</label>
-        <input type="text" name="id" value="{id}" readonly><br><br>
+    <form method="POST" enctype="multipart/form-data" action="index.php?class=TestemunhoForm&method=save">
+        
+        <div class="form-group">
+            <label>ID:</label>
+            <input type="text" name="id" value="{id}" readonly style="background: #f9f9f9; color: #888;">
+        </div>
 
-        <label>Nome:</label>
-        <input type="text" name="nome" value="{nome}" required><br><br>
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{nome}" placeholder="Nome do cliente" required>
+        </div>
 
-        <label>Função:</label>
-        <input type="text" name="funcao" value="{funcao}"><br><br>
+        <div class="form-group">
+            <label>Função:</label>
+            <input type="text" name="funcao" value="{funcao}" placeholder="Ex: Diretor, Cliente, etc.">
+        </div>
 
-        <label>Título:</label>
-        <input type="text" name="titulo" value="{titulo}"><br><br>
+        <div class="form-group">
+            <label>Título:</label>
+            <input type="text" name="titulo" value="{titulo}" placeholder="Título do depoimento">
+        </div>
 
-        <label>Descrição:</label>
-        <input type="text" name="descricao" value="{descricao}"><br><br>
+        <div class="form-group">
+            <label>Descrição:</label>
+            <textarea name="descricao" rows="4" placeholder="O que o cliente disse?">{descricao}</textarea>
+        </div>
 
+        <div class="form-group">
+            <label>Foto do Cliente:</label>
+            <img src="{foto}" width="120" class="img-preview">
+            <input type="file" name="foto">
+            <input type="hidden" name="foto_atual" value="{foto}">
+        </div>
 
-        <label>Foto:</label>
-        <img src="{foto}" width="120"><br>
-        <input type="file" name="foto">
-        <input type="hidden" name="foto_atual" value="{foto}"><br><br>
+        <div class="form-group">
+            <label>Imagem de Fundo:</label>
+            <img src="{imagem_fundo}" width="120" class="img-preview">
+            <input type="file" name="imagem_fundo">
+            <input type="hidden" name="imagem_fundo_atual" value="{imagem_fundo}">
+        </div>
 
-        <label>Imagem de Fundo:</label>
-        <img src="{imagem_fundo}" width="120"><br>
-        <input type="file" name="imagem_fundo">
-        <input type="hidden" name="imagem_fundo_atual" value="{imagem_fundo}"><br><br>
-
-
-        <button type="submit">Salvar</button>
+        <button type="submit">Salvar Testemunho</button>
+        <a href="index.php?class=TestemunhoList" class="btn" style="margin-left: 10px; color: #666; text-decoration: none;">Cancelar</a>
     </form>
+
 </body>
 </html>
