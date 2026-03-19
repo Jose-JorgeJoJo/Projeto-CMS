@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Característica</title>
+</head>
+<body>
+    <h2>Cadastro de Característica</h2>
+    
+    <form method="post" action="index.php?class=CaracteristicaForm&method=save">
+        <input type="hidden" name="id" value="{id}">
+
+        <p>
+            <label>Título:</label><br>
+            <input type="text" name="titulo" value="{titulo}" required style="width: 300px;">
+        </p>
+
+        <p>
+            <label>Descrição:</label><br>
+            <textarea name="descricao" rows="5" required style="width: 300px;">{descricao}</textarea>
+        </p>
+
+        <button type="submit">Salvar</button>
+        <a href="index.php?class=CaracteristicaList">Cancelar</a>
+    </form>
+</body>
+</html>

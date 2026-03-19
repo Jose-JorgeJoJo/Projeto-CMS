@@ -670,33 +670,8 @@
     <script src="js/app.js"></script> 
 
 
-    <script>
-fetch('../cms/api/api.php')
-.then(res => res.json())
-.then(data => {
+    <scrip src="js/api.js"></script>
 
-    console.log(data); // debug
-
-    // favicon
-    if(data.favicon){
-        document.getElementById("favicon").href = data.favicon;
-    }
-/*
-    // título home
-    document.getElementById("titulo_home").innerText =
-        data.titulo_home || '';
-
-    // subtítulo
-    document.getElementById("subtitulo_home").innerText =
-        data.subtitulo_home || '';
-
-    // logo
-    if(data.logo_cabecalho){
-        document.getElementById("logo").src =
-            "../cms/uploads/" + data.logo_cabecalho;
-    }
-*/
-});
 
 </script>
     <style>

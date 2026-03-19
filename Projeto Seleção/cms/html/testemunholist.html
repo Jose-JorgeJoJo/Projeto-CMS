@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Testemunhos</title>
+</head>
+<body>
+    <a href="index.php?class=Dashboard">
+        <button>← Voltar ao Dashboard</button>
+    </a>
+
+    <h2>Testemunhos</h2>
+
+    <a href="index.php?class=TestemunhoForm">Novo Testemunho</a>
+
+    <br><br>
+
+    <table border="1" style="width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Função</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Foto</th>
+                <th>Fundo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {tabela}
+        </tbody>
+    </table>
+</body>
+</html>

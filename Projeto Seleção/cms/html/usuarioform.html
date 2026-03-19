@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <style>
+        .container { max-width: 400px; margin: 20px auto; font-family: sans-serif; }
+        input { display: block; width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; }
+        .btn-voltar { background-color: #6c757d; text-decoration: none; padding: 5px 10px; color: white; font-size: 14px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.php?class=UsuarioList" class="btn-voltar">← Voltar</a>
+    
+    <h2>Novo Usuário</h2>
+
+    <form method="POST" action="index.php?class=UsuarioForm&method=save">
+        <label>Login:</label>
+        <input type="text" name="login" placeholder="Digite o login" required>
+
+        <label>Senha:</label>
+        <input type="password" name="senha" placeholder="Digite a senha" required>
+
+        <button type="submit">Salvar Usuário</button>
+    </form>
+</div>
+
+</body>
+</html>

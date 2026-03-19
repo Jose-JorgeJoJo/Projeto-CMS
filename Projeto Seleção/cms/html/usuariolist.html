@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Usuários</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .btn-voltar { margin-bottom: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <a href="index.php?class=Dashboard" class="btn-voltar">
+        <button>← Voltar ao Dashboard</button>
+    </a>
+
+    <h2>Usuários Cadastrados</h2>
+
+    <a href="index.php?class=UsuarioForm">
+        <button style="background-color: #28a745; color: white; border: none; padding: 10px;">+ Novo Usuário</button>
+    </a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {tabela}
+        </tbody>
+    </table>
+
+</body>
+</html>
