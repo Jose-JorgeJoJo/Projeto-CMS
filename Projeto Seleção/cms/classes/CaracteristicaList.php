@@ -18,7 +18,7 @@ class CaracteristicaList {
     }
 
     public function show() {
-        $dados = Caracteristica::all();
+        $dados = Caracteristica::get();
         $linhas = "";
 
         foreach ($dados as $c) {

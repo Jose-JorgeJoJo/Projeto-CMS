@@ -4,12 +4,15 @@ require_once "Database.php";
 
 class Caracteristica {
 
-    public static function all(){
+    public static function get(){
         $conn = Database::getConnection();
 
-        return $conn->query("SELECT * FROM caracteristicas ORDER BY id DESC")
-                    ->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM caracteristicas ORDER BY id";
+        $stmt = $conn->query($sql);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public static function find($id){
         $conn = Database::getConnection();

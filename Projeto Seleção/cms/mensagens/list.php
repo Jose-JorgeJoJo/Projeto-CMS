@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "../classes/Mensagens.php";
+require_once "../classes/Mensagem.php";
 
 $mensagens = Mensagem::all();
 ?>
