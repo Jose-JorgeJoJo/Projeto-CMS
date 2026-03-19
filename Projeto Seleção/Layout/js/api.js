@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="row align-items-center">
 
                     <div class="col-md-5">
-                        <img src="${getImg(item.fundo)}" class="img-fluid">
+                        <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
                     </div>
 
                     <div class="col-md-7">

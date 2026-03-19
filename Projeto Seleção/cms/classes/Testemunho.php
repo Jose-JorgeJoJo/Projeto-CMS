@@ -32,35 +32,51 @@ class Testemunho{
 
     }
 
-    public static function save($dados){
+   public static function save($dados){
 
-        $conn = Database::getConnection();
+    $conn = Database::getConnection();
 
-        // verifica se já existe registro
-        $existe = self::get();
+    if(empty($dados['id'])){
 
-        if(empty($dados['id'])){
-
-            // INSERT (primeira vez)
-            $sql = "INSERT INTO testemunhos (
-                nome, funcao, titulo, descricao, foto, imagem_fundo
-            ) VALUES (
-                :nome, :funcao, :titulo, :descricao, :foto, :imagem_fundo
-            )";
-            unset($dados['id']);
-
-        } else {
-
-            // UPDATE (sempre atualiza o único registro)
-            $sql = "UPDATE testemunhos SET
-                nome = :nome, funcao = :funcao, titulo = :titulo, descricao = :descricao, foto = :foto, imagem_fundo = :imagem_fundo
-            WHERE id = :id";
-
-            
-        }
+        $sql = "INSERT INTO testemunhos (
+            nome, funcao, titulo, descricao, foto, imagem_fundo
+        ) VALUES (
+            :nome, :funcao, :titulo, :descricao, :foto, :imagem_fundo
+        )";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute($dados);
-    }
 
+        $stmt->execute([
+            ':nome' => $dados['nome'],
+            ':funcao' => $dados['funcao'],
+            ':titulo' => $dados['titulo'],
+            ':descricao' => $dados['descricao'],
+            ':foto' => $dados['foto'],
+            ':imagem_fundo' => $dados['imagem_fundo']
+        ]);
+
+    } else {
+
+        $sql = "UPDATE testemunhos SET
+            nome = :nome,
+            funcao = :funcao,
+            titulo = :titulo,
+            descricao = :descricao,
+            foto = :foto,
+            imagem_fundo = :imagem_fundo
+        WHERE id = :id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([
+            ':id' => $dados['id'],
+            ':nome' => $dados['nome'],
+            ':funcao' => $dados['funcao'],
+            ':titulo' => $dados['titulo'],
+            ':descricao' => $dados['descricao'],
+            ':foto' => $dados['foto'],
+            ':imagem_fundo' => $dados['imagem_fundo']
+        ]);
+    }
+}
 }

@@ -12,7 +12,7 @@
 
     {mensagem}
 
-    <form method="post" action="index.php?class=TestemunhoForm&method=save">
+    <form method="post" enctype="multipart/form-data" action="index.php?class=TestemunhoForm&method=save">
         <label>Id:</label>
         <input type="text" name="id" value="{id}" readonly><br><br>
 
@@ -28,11 +28,17 @@
         <label>Descrição:</label>
         <input type="text" name="descricao" value="{descricao}"><br><br>
 
+
         <label>Foto:</label>
-        <input type="text" name="foto" value="{foto}"><br><br>
+        <img src="{foto}" width="120"><br>
+        <input type="file" name="foto">
+        <input type="hidden" name="foto_atual" value="{foto}"><br><br>
 
         <label>Imagem de Fundo:</label>
-        <input type="text" name="imagem_fundo" value="{imagem_fundo}"><br><br>
+        <img src="{imagem_fundo}" width="120"><br>
+        <input type="file" name="imagem_fundo">
+        <input type="hidden" name="imagem_fundo_atual" value="{imagem_fundo}"><br><br>
+
 
         <button type="submit">Salvar</button>
     </form>
