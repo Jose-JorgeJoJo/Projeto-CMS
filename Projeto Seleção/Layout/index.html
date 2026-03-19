@@ -48,7 +48,7 @@
 
             <!-- LOGO -->
             <a class="navbar-brand logo text-uppercase" href="../landpage">
-                <img src="images/logo.png" class="logo-dark" alt="" height="30">
+                <img id="logo" src="" class="logo-dark" alt="" height="30">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -72,14 +72,16 @@
                     </li>
                 </ul>
                 <div class=" d-flex align-items-center" style="margin-left: 20px!important;">
-                     <a href="https://www.facebook.com" target="_blank"
+                     <a id="link_facebook" href="" target="_blank"
 							class="me-2 avatar-sm text-center" data-bs-toggle="tooltip" data-bs-placement="top"
 							data-bs-title="Facebook" title="Facebook">
+                            <img id="img_facebook" src="" width="24">
 							<i class="mdi mdi-facebook f-24 align-middle text-primary"></i>
                      </a>
-                     <a href="https://instagram.com" target="_blank"
+                     <a id="link_instagram" href="" target="_blank"
 							class="mx-2 avatar-sm text-center" data-bs-toggle="tooltip" data-bs-placement="top"
                             data-bs-title="Instagran" title="Instagram">
+                            <img id="img_instagram" src="" width="24">
                             <i class="mdi mdi-instagram f-24 align-middle text-primary"></i>
 					</a>
                 </div>				
@@ -115,9 +117,10 @@
                                         <div class="flex-shrink-0">
                                         </div>
                                         <div class="flex-grow-1 ms-3">
-                                            <h6 class="mb-0">Tecnologia Cloud Computing</h6>
-                                            <p class="fw-semibold mb-0 text-muted">Conectando organizações, pessoas e
-                                                processos.</p>
+                                           <h6 id="titulo_home">Tecnologia Cloud Computing</h6>
+                                            <p id="subtitulo_home" class="fw-semibold mb-0 text-muted">
+                                                Conectando organizações...
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +148,7 @@
 
                                         <div class="row align-items-center">
                                             <div class="col-lg-6">
-                                                <img src="images/features/home-1.png" alt="" class="img-fluid"
+                                                <img id="imagem_home" src="" class="img-fluid"
                                                     style="animation: ani-bg 3s infinite;">
                                             </div>
 
@@ -454,10 +457,14 @@
                         <p class="text-white-50 mt-3 f-18">Baixe nas lojas.<br><br><br><br></p>
                         <div class="d-flex mt-4 ">
                             <div class="app-store">
-                                <a target="_blank" href="https://apps.apple.com"><img src="images/img-appstore.png" alt="" class="img-fluid"></a>
+                               <a id="link_appstore" target="_blank" href="">
+                                    <img id="img_appstore" src="" class="img-fluid">
+                                </a>
                             </div>
                             <div class="googleplay">
-                                <a target="_blank" href="https://play.google.com "><img src="images/img-googleplay.png" alt="" class="img-fluid ms-3"></a>
+                                <a id="link_playstore" target="_blank" href="">
+                                    <img id="img_playstore" src="" alt="" class="img-fluid ms-3">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -570,7 +577,7 @@
                         </div>
                         <div class="flex-grow-1 ms-3">
                             <h5 class="mb-1">Telefone</h5>
-                            <p class="f-14 mb-0 text-muted"> 99-99999-9999</p>
+                           <p id="telefone" class="f-14 mb-0 text-muted"> <!-- 99-99999-9999 --></p>
                         </div>
                     </div>
 
@@ -593,12 +600,12 @@
             <div class="row justify-content-center ">
                 <div class="col-lg-4">
                     <a class="navbar-brand logo text-uppercase" href="#">
-                        <img src="images/logo-footer.png" class="logo-light" alt="" height="30">
+                        <img id="logo_rodape" src="" class="logo-light" height="30">
                     </a>
-                    <p class="text-white-50 mt-2 mb-0">©
+                    <p id="copyright" class="text-white-50 mt-2 mb-0">©
                         <script>document.write(new Date().getFullYear())</script> Todos os direitos reservados.
                     </p>
-                    <a href="#" target="_blank">
+                    <a id="url_rodape" href="#" target="_blank">
                         <p>www.landpage.com.br</p>
                     </a>
                     <div class="footer-icon mt-4">
@@ -646,7 +653,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <p class="mb-0 text-center text-muted">Versão 1.0 ©
+                    <p id="powered" class="mb-0 text-center text-muted">Versão 1.0 ©
                         <script>document.write(new Date().getFullYear())</script> Powered by <a
                             href="#" target="_blank" class="text-muted">Landing Page Treinamento.</a>
                     </p>
@@ -670,7 +677,7 @@
     <script src="js/app.js"></script> 
 
 
-    <scrip src="js/api.js"></script>
+    <script src="js/api.js"></script>
 
 
 </script>

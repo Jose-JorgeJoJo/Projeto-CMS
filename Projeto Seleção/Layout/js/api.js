@@ -1,96 +1,95 @@
-fetch('../cms/api/api.php')
-.then(res => res.json())
-.then(data => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    console.log(data);
+    fetch('../cms/api/api.php')
+    .then(res => res.json())
+    .then(data => {
 
-    // ✅ favicon
-    if(data.favicon){
-        document.getElementById("favicon").href = data.favicon;
-    }
+        console.log(data);
 
-    // ✅ logo
-    if(data.logo_cabecalho){
-        document.getElementById("logo").src = data.logo_cabecalho;
-    }
+        // ✅ CAMINHO BASE CORRETO
+        const base = '../';
 
-    // ✅ títulos
-    document.getElementById("titulo_home").innerText = data.titulo_home || '';
-    document.getElementById("subtitulo_home").innerText = data.subtitulo_home || '';
+        const getImg = (path) => {
+            if (!path) return '';
+            if (path.startsWith('http')) return path; // imagem externa
+            return base + path; // uploads/arquivo.jpg
+        };
 
-    // ✅ imagem home
-    if(data.imagem_home){
-        document.getElementById("imagem_home").src = data.imagem_home;
-    }
+        // ✅ favicon
+        if (data.favicon) {
+            document.getElementById("favicon").href = getImg(data.favicon);
+        }
 
-    // ✅ seção características
-    document.getElementById("titulo_caracteristicas").innerText =
-        data.titulo_caracteristicas || '';
+        // ✅ logo
+        if (data.logo_cabecalho) {
+            document.getElementById("logo").src = getImg(data.logo_cabecalho);
+        }
 
-    // ✅ testemunho
-    document.getElementById("titulo_testemunho").innerText =
-        data.titulo_testemunho || '';
+        // ✅ títulos
+        document.getElementById("titulo_home").innerText = data.titulo_home || '';
+        document.getElementById("subtitulo_home").innerText = data.subtitulo_home || '';
 
-    // ✅ loja
-    document.getElementById("titulo_loja").innerText =
-        data.titulo_loja || '';
+        // ✅ imagem home
+        if (data.imagem_home) {
+            document.getElementById("imagem_home").src = getImg(data.imagem_home);
+        }
 
-    document.getElementById("subtitulo_loja").innerText =
-        data.subtitulo_loja || '';
+        // ✅ loja
+        if (data.imagem_loja) {
+            const el = document.getElementById("imagem_loja");
+            if (el) el.src = getImg(data.imagem_loja);
+        }
 
-    if(data.imagem_loja){
-        document.getElementById("imagem_loja").src = data.imagem_loja;
-    }
+        // ✅ app store / play store
+        if (data.imagem_appstore) {
+            document.getElementById("img_appstore").src = getImg(data.imagem_appstore);
+        }
 
-    // ✅ app store / play store
-    if(data.imagem_appstore){
-        document.getElementById("img_appstore").src = data.imagem_appstore;
-    }
+        if (data.imagem_playstore) {
+            document.getElementById("img_playstore").src = getImg(data.imagem_playstore);
+        }
 
-    if(data.imagem_playstore){
-        document.getElementById("img_playstore").src = data.imagem_playstore;
-    }
+        if (data.link_appstore) {
+            document.getElementById("link_appstore").href = data.link_appstore;
+        }
 
-    if(data.link_appstore){
-        document.getElementById("link_appstore").href = data.link_appstore;
-    }
+        if (data.link_playstore) {
+            document.getElementById("link_playstore").href = data.link_playstore;
+        }
 
-    if(data.link_playstore){
-        document.getElementById("link_playstore").href = data.link_playstore;
-    }
+        // ✅ redes sociais
+        if (data.link_facebook) {
+            document.getElementById("link_facebook").href = data.link_facebook;
+        }
 
-    // ✅ redes sociais
-    if(data.link_facebook){
-        document.getElementById("link_facebook").href = data.link_facebook;
-    }
+        if (data.link_instagram) {
+            document.getElementById("link_instagram").href = data.link_instagram;
+        }
 
-    if(data.link_instagram){
-        document.getElementById("link_instagram").href = data.link_instagram;
-    }
+        if (data.imagem_facebook) {
+            document.getElementById("img_facebook").src = getImg(data.imagem_facebook);
+        }
 
-    if(data.imagem_facebook){
-        document.getElementById("img_facebook").src = data.imagem_facebook;
-    }
+        if (data.imagem_instagram) {
+            document.getElementById("img_instagram").src = getImg(data.imagem_instagram);
+        }
 
-    if(data.imagem_instagram){
-        document.getElementById("img_instagram").src = data.imagem_instagram;
-    }
+        // ✅ rodapé
+        if (data.logo_rodape) {
+            document.getElementById("logo_rodape").src = getImg(data.logo_rodape);
+        }
 
-    // ✅ rodapé
-    if(data.logo_rodape){
-        document.getElementById("logo_rodape").src = data.logo_rodape;
-    }
+        document.getElementById("telefone").innerText = data.telefone || '';
+        document.getElementById("copyright").innerText = data.mensagem_copyright || '';
+        document.getElementById("powered").innerText = data.mensagem_powered || '';
 
-    document.getElementById("telefone").innerText = data.telefone;
+        if (data.url_rodape) {
+            document.getElementById("url_rodape").href = data.url_rodape;
+        }
 
-    document.getElementById("copyright").innerText =
-        data.mensagem_copyright || '';
-
-    if(data.url_rodape){
-        document.getElementById("url_rodape").href = data.url_rodape;
-    }
-
-    document.getElementById("powered").innerText =
-        data.mensagem_powered || '';
+    })
+    .catch(err => {
+        console.error("Erro ao carregar API:", err);
+    });
 
 });
