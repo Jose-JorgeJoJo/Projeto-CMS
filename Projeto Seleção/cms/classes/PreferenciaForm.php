@@ -18,8 +18,6 @@ class PreferenciaForm {
             'imagem_appstore',
             'imagem_playstore',
             'logo_rodape',
-            'imagem_facebook',
-            'imagem_instagram'
         ];
 
         foreach ($camposImagem as $campo) {

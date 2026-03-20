@@ -32,7 +32,6 @@ class Preferencia {
             imagem_appstore, imagem_playstore,
             telefone, logo_rodape,
             mensagem_copyright, url_rodape, mensagem_powered,
-            imagem_facebook, imagem_instagram,
             link_appstore, link_playstore
         ) VALUES (
             :titulo_landing, :favicon, :logo_cabecalho,
@@ -43,7 +42,6 @@ class Preferencia {
             :imagem_appstore, :imagem_playstore,
             :telefone, :logo_rodape,
             :mensagem_copyright, :url_rodape, :mensagem_powered,
-            :imagem_facebook, :imagem_instagram,
             :link_appstore, :link_playstore
         )";
         } else {
@@ -70,8 +68,6 @@ class Preferencia {
             mensagem_copyright = :mensagem_copyright,
             url_rodape = :url_rodape,
             mensagem_powered = :mensagem_powered,
-            imagem_facebook = :imagem_facebook,
-            imagem_instagram = :imagem_instagram,
             link_appstore = :link_appstore,
             link_playstore = :link_playstore
         WHERE id = :id";
@@ -88,7 +84,6 @@ class Preferencia {
             'imagem_appstore', 'imagem_playstore',
             'telefone', 'logo_rodape',
             'mensagem_copyright', 'url_rodape', 'mensagem_powered',
-            'imagem_facebook', 'imagem_instagram',
             'link_appstore', 'link_playstore',
             'id'
         ];
