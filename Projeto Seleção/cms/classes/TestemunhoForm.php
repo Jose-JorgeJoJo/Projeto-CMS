@@ -23,11 +23,11 @@ class TestemunhoForm {
 
     if ($_POST) {
 
-        // 📸 upload das imagens
+        
         $foto = $this->uploadImagem('foto');
         $fundo = $this->uploadImagem('imagem_fundo');
 
-        // 🧠 mantém imagem antiga se não enviar nova
+        
         $dados = $_POST;
 
         $dados['foto'] = $foto ?? $_POST['foto_atual'];

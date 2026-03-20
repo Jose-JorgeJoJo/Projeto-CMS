@@ -32,9 +32,15 @@ class PreferenciaForm {
             }
         }
 
-        // 🔥 REMOVE CAMPOS *_atual (ESSENCIAL)
+       
         foreach ($request as $key => $value) {
             if (str_ends_with($key, '_atual')) {
+                unset($request[$key]);
+            }
+        }
+
+        foreach ($request as $key => $value) {
+            if ($value === '' || $value === null) {
                 unset($request[$key]);
             }
         }

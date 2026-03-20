@@ -4,7 +4,7 @@ class TestemunhoList {
     private $html;
 
     public function __construct() {
-        // Ajuste o caminho conforme sua estrutura (se estiver dentro de cms/html/)
+        
         $this->html = file_get_contents('cms/html/testemunholist.html');
     }
 
@@ -31,7 +31,6 @@ class TestemunhoList {
             $linhas .= "<td>{$t['foto']}</td>";
             $linhas .= "<td>{$t['imagem_fundo']}</td>";
             $linhas .= "<td>";
-            // IMPORTANTE: Link formatado para o seu index.php
             $linhas .= "<a href='index.php?class=TestemunhoForm&method=edit&id={$t['id']}'>Editar</a> | ";
             $linhas .= "<a href='index.php?class=TestemunhoList&method=delete&id={$t['id']}' 
                         onclick='return confirm(\"Deseja excluir?\")'>Excluir</a>";

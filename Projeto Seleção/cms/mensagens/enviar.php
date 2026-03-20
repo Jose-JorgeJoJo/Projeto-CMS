@@ -1,7 +1,6 @@
 <?php
 
-//echo "CHEGOU NO PHP";
-//exit;
+
 
 require_once __DIR__ . "/../classes/Database.php";
 
@@ -32,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':mensagem' => $mensagem
         ]);
 
-        // REDIRECIONA DE VOLTA PRA LANDING
-        header("Location: ../../layout/index.html?sucesso=1");
+
+       header("Location: ../../layout/index.html?sucesso=1#contact");
         exit;
 
     } catch (Exception $e) {

@@ -1,3 +1,4 @@
+  //Mensagem de sucesso
 document.addEventListener("DOMContentLoaded", function () {
 
   console.log("JS carregou");
@@ -18,29 +19,30 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Elemento #msg_alert não encontrado");
     }
 
-    // remove da URL
+    
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 
 });
 
+  //Preferências
 document.addEventListener("DOMContentLoaded", function () {
   fetch("../cms/api/api.php")
     .then((res) => res.json())
     .then((data) => {
-      const pref = data.preferencias; // 👈 ESSENCIAL
+      const pref = data.preferencias; 
       console.log(pref);
 
-      // ✅ CAMINHO BASE CORRETO
+
       const base = "../";
 
       const getImg = (path) => {
         if (!path) return "";
-        if (path.startsWith("http")) return path; // imagem externa
-        return base + path; // uploads/arquivo.jpg
+        if (path.startsWith("http")) return path; 
+        return base + path;
       };
 
-      // ✅ favicon
+     
       if (pref.favicon) {
         document.getElementById("favicon").href = getImg(pref.favicon);
       }
@@ -48,41 +50,42 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("titulo_landing").innerText =
         pref.titulo_landing || "";
 
-      // ✅ logo
+      
       if (pref.logo_cabecalho) {
         document.getElementById("logo").src = getImg(pref.logo_cabecalho);
       }
 
-      // ✅ títulos
+      
       document.getElementById("titulo_home").innerText = pref.titulo_home || "";
       document.getElementById("subtitulo_home").innerText =
         pref.subtitulo_home || "";
 
-      // ✅ imagem home
+      
       if (pref.imagem_home) {
         document.getElementById("imagem_home").src = getImg(pref.imagem_home);
       }
 
-      // ✅ seção características
+      
 
       document.getElementById("texto_titulo_caracteristicas").innerText =
         pref.titulo_caracteristicas || "";
 
-      // ✅ testemunho
+     
       document.getElementById("titulo_testemunho").innerText =
         pref.titulo_testemunho || "";
 
-      // ✅ loja
+      
       if (pref.imagem_loja) {
         document.getElementById("imagem_loja").src = getImg(pref.imagem_loja);
       }
 
-      // ✅ loja
+      
       document.getElementById("titulo_loja").innerText = pref.titulo_loja || "";
 
       document.getElementById("subtitulo_loja").innerText =
         pref.subtitulo_loja || "";
-      // ✅ app store / play store
+      
+
       if (pref.imagem_appstore) {
         document.getElementById("img_appstore").src = getImg(
           pref.imagem_appstore,
@@ -103,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("link_playstore").href = pref.link_playstore;
       }
 
-      // ✅ redes sociais
+      
       if (pref.link_facebook) {
         document.getElementById("link_facebook").href = pref.link_facebook;
       }
@@ -112,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("link_instagram").href = pref.link_instagram;
       }
 
-      // ✅ rodapé
+      
       if (pref.logo_rodape) {
         document.getElementById("logo_rodape").src = getImg(pref.logo_rodape);
       }
@@ -137,7 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
           pref.link_instagram;
       }
 
-      const container = document.getElementById("lista_caracteristicas");
+      //Características
+    const container = document.getElementById("lista_caracteristicas");
 
       if (container && data.caracteristicas) {
         let html = '<div class="col-lg-6">';
@@ -157,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-          // quebra coluna (2 itens por coluna)
           if ((index + 1) % 2 === 0) {
             html += '</div><div class="col-lg-6">';
           }
@@ -168,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = html;
       }
 
+      //Testemunhos
       const containerTest = document.getElementById("lista_testemunhos");
 
       if (containerTest && data.testemunhos?.length > 0) {
@@ -213,9 +217,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         containerTest.innerHTML = html;
 
-        // 🔥 AGUARDA o DOM atualizar
+       
         setTimeout(() => {
-          // destrói se já existir
           if ($("#lista_testemunhos").hasClass("owl-loaded")) {
             $("#lista_testemunhos").trigger("destroy.owl.carousel");
             $("#lista_testemunhos").removeClass("owl-loaded");
@@ -225,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .unwrap();
           }
 
-          // inicia slider
+          //inicia slider
           $("#lista_testemunhos").owlCarousel({
             items: 1,
             loop: true,
@@ -236,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
             autoplayTimeout: 4000,
             smartSpeed: 600,
           });
-        }, 100); // 🔥 ESSENCIAL
+        }, 100); 
       }
     })
     .catch((err) => {

@@ -17,12 +17,12 @@ class Preferencia {
 
         $conn = Database::getConnection();
 
-        // verifica se já existe registro
+        
         $existe = self::get();
 
         if(!$existe){
 
-            // INSERT (primeira vez)
+            
            $sql = "INSERT INTO preferencias (
             titulo_landing, favicon, logo_cabecalho,
             link_facebook, link_instagram,
@@ -48,7 +48,7 @@ class Preferencia {
         )";
         } else {
 
-            // UPDATE (sempre atualiza o único registro)
+            
          $sql = "UPDATE preferencias SET
             titulo_landing = :titulo_landing,
             favicon = :favicon,
@@ -99,7 +99,7 @@ class Preferencia {
             if (isset($dados[$campo])) {
                 $dadosFinal[$campo] = $dados[$campo];
             } else {
-                $dadosFinal[$campo] = null; // evita erro de parâmetro faltando
+                $dadosFinal[$campo] = null; 
             }
         }
 
