@@ -28,8 +28,8 @@ class TestemunhoList {
             $linhas .= "<td>{$t['funcao']}</td>";
             $linhas .= "<td>{$t['titulo']}</td>";
             $linhas .= "<td>{$t['descricao']}</td>";
-            $linhas .= "<td>{$t['foto']}</td>";
-            $linhas .= "<td>{$t['imagem_fundo']}</td>";
+            $linhas .= "<td><img src='{$t['foto']}' width='80' style='border-radius:50%'></td>";
+            $linhas .= "<td><img src='{$t['imagem_fundo']}' width='80'></td>";
             $linhas .= "<td>";
             $linhas .= "<a href='index.php?class=TestemunhoForm&method=edit&id={$t['id']}'>Editar</a> | ";
             $linhas .= "<a href='index.php?class=TestemunhoList&method=delete&id={$t['id']}' 
