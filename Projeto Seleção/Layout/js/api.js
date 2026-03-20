@@ -1,4 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  console.log("JS carregou");
+
+  const params = new URLSearchParams(window.location.search);
+  const sucesso = params.get("sucesso");
+
+  console.log("param sucesso:", sucesso);
+
+  if (sucesso === "1") {
+    const msg = document.getElementById("msg_alert");
+
+    console.log("msg element:", msg);
+
+    if (msg) {
+      msg.style.display = "block";
+    } else {
+      console.error("Elemento #msg_alert não encontrado");
+    }
+
+    // remove da URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   fetch("../cms/api/api.php")
     .then((res) => res.json())
     .then((data) => {
@@ -48,9 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ✅ loja
       if (pref.imagem_loja) {
-        document.getElementById("imagem_loja").src = getImg(
-          pref.imagem_loja
-        );
+        document.getElementById("imagem_loja").src = getImg(pref.imagem_loja);
       }
 
       // ✅ loja
@@ -144,13 +168,13 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = html;
       }
 
-  const containerTest = document.getElementById("lista_testemunhos");
+      const containerTest = document.getElementById("lista_testemunhos");
 
-if (containerTest && data.testemunhos?.length > 0) {
-  let html = "";
+      if (containerTest && data.testemunhos?.length > 0) {
+        let html = "";
 
-  data.testemunhos.forEach((item) => {
-    html += `
+        data.testemunhos.forEach((item) => {
+          html += `
       <div class="item">
         <div class="testi-box position-relative overflow-hidden">
           <div class="row align-items-center">
@@ -185,34 +209,35 @@ if (containerTest && data.testemunhos?.length > 0) {
         </div>
       </div>
     `;
-  });
+        });
 
-  containerTest.innerHTML = html;
+        containerTest.innerHTML = html;
 
-  // 🔥 AGUARDA o DOM atualizar
-  setTimeout(() => {
+        // 🔥 AGUARDA o DOM atualizar
+        setTimeout(() => {
+          // destrói se já existir
+          if ($("#lista_testemunhos").hasClass("owl-loaded")) {
+            $("#lista_testemunhos").trigger("destroy.owl.carousel");
+            $("#lista_testemunhos").removeClass("owl-loaded");
+            $("#lista_testemunhos")
+              .find(".owl-stage-outer")
+              .children()
+              .unwrap();
+          }
 
-    // destrói se já existir
-    if ($("#lista_testemunhos").hasClass("owl-loaded")) {
-      $("#lista_testemunhos").trigger("destroy.owl.carousel");
-      $("#lista_testemunhos").removeClass("owl-loaded");
-      $("#lista_testemunhos").find(".owl-stage-outer").children().unwrap();
-    }
-
-    // inicia slider
-    $("#lista_testemunhos").owlCarousel({
-      items: 1,
-      loop: true,
-      margin: 20,
-      nav: false,
-      dots: true,
-      autoplay: true,
-      autoplayTimeout: 4000,
-      smartSpeed: 600
-    });
-
-  }, 100); // 🔥 ESSENCIAL
-}
+          // inicia slider
+          $("#lista_testemunhos").owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 20,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            smartSpeed: 600,
+          });
+        }, 100); // 🔥 ESSENCIAL
+      }
     })
     .catch((err) => {
       console.error("Erro ao carregar API:", err);

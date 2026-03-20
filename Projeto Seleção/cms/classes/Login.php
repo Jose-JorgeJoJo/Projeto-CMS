@@ -18,8 +18,7 @@ class Login {
             $usuario = Usuario::login($login, $senha);
 
             if ($usuario) {
-                $_SESSION['usuario'] = 'usuario';
-               
+                $_SESSION['usuario'] = $usuario;
                 header("Location: index.php?class=Dashboard");
                 exit;
             } else {

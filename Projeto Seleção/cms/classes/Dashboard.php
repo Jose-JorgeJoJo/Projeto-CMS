@@ -8,6 +8,6 @@ class Dashboard {
         }
 
         $html = file_get_contents('cms/html/dashboard.html');
-        echo str_replace('{usuario}', $_SESSION['usuario'], $html);
+        echo str_replace('{usuario}', $_SESSION['usuario']['login'], $html);
     }
 }
