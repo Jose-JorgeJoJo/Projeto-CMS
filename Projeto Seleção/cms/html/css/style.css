@@ -1,21 +1,124 @@
 body { 
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-    padding: 20px; 
+    margin: 0;
+    padding: 0; 
     line-height: 1.6; 
-    background-color: #f0f2f5;
+    background-color: #f8fafc;
     color: #334155;
+    display: flex;
+    min-height: 100vh;
 }
 
-.nav { margin-bottom: 25px; }
+.sidebar {
+    width: 260px;
+    background-color: #1e293b;
+    color: #f8fafc;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
 
-.nav a {
-    color: #64748b;
+.sidebar-header {
+    padding: 30px 20px;
+    text-align: center;
+    background-color: #0f172a;
+    border-bottom: 1px solid #334155;
+}
+
+.sidebar-logo {
+    color: #38bdf8;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.nav a:hover { color: #007bff; }
+.sidebar-links {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-links li a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 14px 25px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.sidebar-links li a:hover {
+    background-color: #334155;
+    color: #f8fafc;
+    padding-left: 30px;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid #334155;
+    margin: 15px 25px;
+    opacity: 0.5;
+}
+
+.btn-ver-site {
+    color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.1);
+    margin: 0 15px 10px 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.btn-ver-site:hover {
+    background-color: #10b981 !important;
+    color: white !important;
+}
+
+.logout-item {
+    margin-top: auto;
+}
+
+.btn-logout {
+    background-color: #ef4444 !important;
+    color: white !important;
+    text-align: center;
+    margin: 0 20px 20px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background-color: #dc2626 !important;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+    animation: entrarSuave 0.4s ease-out forwards;
+}
+
+@keyframes entrarSuave {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
 
 h2, h3 { color: #1e293b; margin-bottom: 20px; }
 
@@ -69,13 +172,8 @@ button:hover, .btn:hover {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.btn-success {
-    background-color: #10b981;
-}
-
-.btn-success:hover {
-    background-color: #059669;
-}
+.btn-success { background-color: #10b981; }
+.btn-success:hover { background-color: #059669; }
 
 img {
     display: block;
@@ -104,7 +202,9 @@ th { background: #f8fafc; color: #64748b; font-weight: 600; text-transform: uppe
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
+    width: 100%;
+    background-color: #f0f2f5;
 }
 
 .login-box {
@@ -148,7 +248,6 @@ th { background: #f8fafc; color: #64748b; font-weight: 600; text-transform: uppe
 }
 
 .dash-card:hover {
-    background: #fff;
     color: #3b82f6;
     border-color: #3b82f6;
     transform: translateY(-5px);
@@ -161,7 +260,6 @@ details {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    transition: all 0.3s;
 }
 
 details[open] { border-color: #3b82f6; }
@@ -173,13 +271,10 @@ summary {
     background: #fff;
     color: #1e293b;
     list-style: none;
-    transition: background 0.2s;
 }
 
 summary:hover { background: #f8fafc; }
-
 summary::before { content: "→"; color: #3b82f6; margin-right: 12px; font-weight: bold; }
 details[open] summary { border-bottom: 1px solid #f1f5f9; }
 details[open] summary::before { content: "↓"; }
-
 .details-content { padding: 20px; background: #fff; }

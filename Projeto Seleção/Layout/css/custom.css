@@ -11,10 +11,49 @@
   object-fit: cover;
 }
 
+.custom-home-img {
+    /* Define uma altura máxima para não ocupar a tela toda */
+    max-height: 700px; 
+    width: 100%;
+    /* O 'contain' garante que a imagem do PC apareça inteira sem cortes */
+    object-fit: contain; 
+    /* Remove possíveis paddings que imagens com fundo branco costumam ter */
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+}
 
+.custom-hero-img {
+    /* Força a imagem a ocupar toda a largura da coluna pai */
+    width: 100% !important; 
+    height: auto;
+    /* Ajusta o alinhamento para não comer as bordas */
+    display: block;
+    margin: 0 auto;
+    /* Se ela ainda parecer pequena, aumente o scale levemente */
+}
 
+/* Garante que o container pai não limite a imagem */
+.col-md-6 { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.custom-store-img {
+    /* Mantém a altura que você quer, mas permite diminuir em telas menores */
+    height: 600px; 
+    /* Centraliza se o container for maior que a imagem */
+    display: block;
+    margin: 0 auto;
+    /* Evita que a imagem "estique" se o arquivo original for menor que 600px */
+    max-width: 100%;
+}
 
-
-
+.app-store img, .googleplay img {
+        height: 45px; /* Altura ideal para botões de loja */
+        width: auto;  /* Deixa a largura ajustar proporcionalmente */
+        object-fit: contain;
+        transition: transform 0.2s; /* Efeito suave ao passar o mouse */
+    }
 

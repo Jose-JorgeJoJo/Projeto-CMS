@@ -30,7 +30,14 @@ if (class_exists($classe)) {
         $pagina->$metodo($_REQUEST);
     }
     
+    if (isset($_SESSION['usuario']) && $classe !== 'Login') {
+        if (file_exists('cms/html/header.html')) {
+            include 'cms/html/header.html';
+        }
+    }
+    
     $pagina->show();
+
 } else {
     echo "Erro: A página '$classe' não existe.";
 }
