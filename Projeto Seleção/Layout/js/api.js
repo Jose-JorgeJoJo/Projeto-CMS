@@ -1,7 +1,6 @@
   //Mensagem de sucesso
 document.addEventListener("DOMContentLoaded", function () {
 
-  console.log("JS carregou");
 
   const params = new URLSearchParams(window.location.search);
   const sucesso = params.get("sucesso");
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((res) => res.json())
     .then((data) => {
       const pref = data.preferencias; 
-      console.log(pref);
 
 
       const base = "../";
@@ -172,75 +170,84 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       //Testemunhos
-      const containerTest = document.getElementById("lista_testemunhos");
+const containerTest = document.getElementById("lista_testemunhos");
 
-      if (containerTest && data.testemunhos?.length > 0) {
-        let html = "";
+if (containerTest && data.testemunhos?.length > 0) {
+  let html = "";
 
-        data.testemunhos.forEach((item) => {
-          html += `
-      <div class="item">
-        <div class="testi-box position-relative overflow-hidden">
-          <div class="row align-items-center">
-
-            <div class="col-md-5">
-              <img src="${getImg(item.imagem_fundo)}" class="img-fluid">
-            </div>
-
-            <div class="col-md-7">
-              <div class="p-4">
-
-                <div class="d-flex align-items-center">
-                  <div class="avatar">
-                    <img src="${getImg(item.foto)}" class="img-fluid rounded-circle">
-                  </div>
-
-                  <div class="ms-3">
-                    <p class="fw-bold mb-0">${item.nome || ""}</p>
-                    <p class="text-muted mb-0">${item.funcao || ""}</p>
-                  </div>
+  data.testemunhos.forEach((item) => {
+   html += `
+ <div class="item">
+        <div class="testi-box position-relative overflow-hidden bg-white shadow-sm rounded-4">
+            <div class="row g-0 align-items-stretch">
+                <div class="col-md-5">
+                    <img src="${getImg(item.imagem_fundo)}" class="img-fluid h-100 w-100 object-fit-cover" alt="Background">
                 </div>
-
-                <div class="mt-3">
-                  <h5 class="fw-bold">${item.titulo || ""}</h5>
-                  <p class="text-muted">${item.descricao || ""}</p>
+                <div class="col-md-7 d-flex align-items-center">
+                    <div class="p-4 p-md-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="flex-shrink-0">
+                                <img src="${getImg(item.foto)}" class="rounded-circle shadow-sm" style="width: 55px; height: 55px; object-fit: cover;">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-0 fw-bold text-dark">${item.nome || ""}</h6>
+                                <p class="text-muted mb-0 small">${item.funcao || ""}</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <h5 class="fw-bold mb-3 text-dark">${item.titulo || ""}</h5>
+                            <p class="text-muted f-14 lh-base">${item.descricao || ""}</p>
+                        </div>
+                    </div>
                 </div>
-
-              </div>
             </div>
-
-          </div>
         </div>
-      </div>
-    `;
-        });
+    </div>
+`;
+  });
 
-        containerTest.innerHTML = html;
+  containerTest.innerHTML = html;
 
-       
-        setTimeout(() => {
-          if ($("#lista_testemunhos").hasClass("owl-loaded")) {
-            $("#lista_testemunhos").trigger("destroy.owl.carousel");
-            $("#lista_testemunhos").removeClass("owl-loaded");
-            $("#lista_testemunhos")
-              .find(".owl-stage-outer")
-              .children()
-              .unwrap();
-          }
+setTimeout(() => {
+  const el = $("#lista_testemunhos");
 
-          //inicia slider
-          $("#lista_testemunhos").owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 20,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 4000,
-            smartSpeed: 600,
-          });
-        }, 100); 
-      }
+  // Destrói qualquer instância anterior para evitar duplicidade
+  el.owlCarousel('destroy'); 
+
+  // Inicializa com as configurações corretas
+  el.owlCarousel({
+    items: 1,
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: true,         // Garante que os pontos sejam criados
+    dotsEach: true,     // Cria um ponto para cada item
+    autoplay: true,
+    autoplayTimeout: 5000,
+    smartSpeed: 450
+  });
+}, 100);
+}
+setTimeout(() => {
+    var owl = $("#lista_testemunhos");
+    
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        dots: true,           // Ativa os pontos
+        dotsData: false,
+        responsive: {
+            0: { items: 1 },
+            600: { items: 1 },
+            1000: { items: 1 }
+        }
+    });
+
+    // Força o refresh após injetar dados
+    owl.trigger('refresh.owl.carousel');
+}, 300);
     })
     .catch((err) => {
       console.error("Erro ao carregar API:", err);
