@@ -278,3 +278,90 @@ summary::before { content: "→"; color: #3b82f6; margin-right: 12px; font-weigh
 details[open] summary { border-bottom: 1px solid #f1f5f9; }
 details[open] summary::before { content: "↓"; }
 .details-content { padding: 20px; background: #fff; }
+
+
+.welcome-container {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.welcome-text h2 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.status-card {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    gap: 20px;
+}
+
+.status-icon {
+    font-size: 2.5rem;
+    background: #f1f5f9;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.status-info h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.25rem;
+}
+
+.status-info p {
+    margin: 5px 0 0;
+    color: #64748b;
+}
+
+.msg-box {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6; 
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+/* Estilizando o link para parecer um botão discreto */
+.btn-small {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    background-color: rgba(59, 130, 246, 0.1); /* Fundo azul bem clarinho */
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-small:hover {
+    background-color: #3b82f6;
+    color: white !important;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Ajuste no card para o botão não ficar colado */
+.status-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

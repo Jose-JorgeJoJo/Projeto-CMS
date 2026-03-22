@@ -3,33 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Característica</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="cms/html/css/style.css">
 </head>
 <body>
 <div class="main-content">
     <div class="nav">
         <a href="index.php?class=CaracteristicaList" class="btn">← Voltar para a Lista</a>
-        <a href="index.php?class=Dashboard" class="btn">← Dashboard</a>
     </div>
 
     <h2>Cadastro de Característica</h2>
     
-    <form method="POST" action="index.php?class=CaracteristicaForm&method=save">
-        <input type="hidden" name="id" value="{id}">
+    <div class="form-group">
+        <form method="POST" action="index.php?class=CaracteristicaForm&method=save">
+            <input type="hidden" name="id" value="{id}">
 
-        <div class="form-group">
-            <label>Título:</label>
-            <input type="text" name="titulo" value="{titulo}" placeholder="Digite o título da característica" required>
-        </div>
+            <div style="margin-bottom: 20px;">
+                <label>Título:</label>
+                <input type="text" name="titulo" value="{titulo}" placeholder="Digite o título da característica" required>
+            </div>
 
-        <div class="form-group">
-            <label>Descrição:</label>
-            <textarea name="descricao" rows="5" placeholder="Descreva esta característica" required>{descricao}</textarea>
-        </div>
+            <div style="margin-bottom: 20px;">
+                <label>Descrição:</label>
+                <textarea name="descricao" rows="5" placeholder="Descreva esta característica" required>{descricao}</textarea>
+            </div>
 
-        <button type="submit">Salvar</button>
-        <a href="index.php?class=CaracteristicaList" class="btn" style="margin-left: 10px; color: #666; text-decoration: none;">Cancelar</a>
-    </form>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button type="submit" class="btn-success">Salvar Alterações</button>
+                <a href="index.php?class=CaracteristicaList" class="btn" style="background-color: #64748b;">Cancelar</a>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
